@@ -6,8 +6,7 @@ import com.jddev.crmapp.authentication.dto.request.RegistrationRequest;
 import com.jddev.crmapp.authentication.dto.response.LoginResponse;
 import com.jddev.crmapp.authentication.dto.response.RegistrationResponse;
 import com.jddev.crmapp.authentication.model.AppUser;
-import com.jddev.crmapp.authentication.service.IAuthenticationService;
-import com.jddev.crmapp.enums.ResponseType;
+import com.jddev.crmapp.authentication.service.AuthenticationService;
 import com.jddev.crmapp.exception.APIResponseObject;
 import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
@@ -24,16 +23,16 @@ import org.springframework.web.bind.annotation.RestController;
 @Validated
 public class AuthenticationController {
 
-    private final IAuthenticationService IAuthenticationService;
+    private final AuthenticationService AuthenticationService;
 
-    public AuthenticationController(IAuthenticationService IAuthenticationService) {
-        this.IAuthenticationService = IAuthenticationService;
+    public AuthenticationController(AuthenticationService AuthenticationService) {
+        this.AuthenticationService = AuthenticationService;
     }
 
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@Valid @RequestBody RegistrationRequest body) throws MessagingException {
 
-        AppUser newUser = IAuthenticationService.RegisterUser(body);
+        AppUser newUser = AuthenticationService.RegisterUser(body);
 
         return new APIResponseObject.Builder()
                 .withMessage("User succesfully created!")
@@ -45,7 +44,7 @@ public class AuthenticationController {
     @PostMapping("/login")
     public ResponseEntity<?> loginUser(@Valid @RequestBody LoginRequest body)
     {
-        Token token = IAuthenticationService.LoginUser(body);
+        Token token = AuthenticationService.LoginUser(body);
 
         return new APIResponseObject.Builder()
                 .withObject(new LoginResponse(token))

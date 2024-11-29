@@ -2,7 +2,7 @@ package com.jddev.crmapp.authentication.config;
 
 import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import com.jddev.crmapp.authentication.service.IAuthenticationService;
+import com.jddev.crmapp.authentication.service.AuthenticationService;
 import com.jddev.crmapp.utility.token.ITokenService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -26,11 +26,11 @@ public class JWTRequestFilter extends OncePerRequestFilter {
     private final Integer TOKEN_START_INDEX = 7;
 
 
-    private final IAuthenticationService authenticationService;
+    private final AuthenticationService authenticationService;
     private final ITokenService tokenService;
     private final UserDetailsService userDetailsService;
 
-    public JWTRequestFilter(IAuthenticationService authenticationService, ITokenService tokenService,
+    public JWTRequestFilter(AuthenticationService authenticationService, ITokenService tokenService,
                             UserDetailsService userDetailsService) {
         this.authenticationService = authenticationService;
         this.tokenService = tokenService;

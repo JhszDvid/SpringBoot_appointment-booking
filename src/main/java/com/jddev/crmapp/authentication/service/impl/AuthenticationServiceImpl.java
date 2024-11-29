@@ -5,7 +5,7 @@ import com.jddev.crmapp.authentication.dto.request.LoginRequest;
 import com.jddev.crmapp.authentication.dto.request.RegistrationRequest;
 import com.jddev.crmapp.authentication.model.AppUser;
 import com.jddev.crmapp.authentication.repository.UserRepository;
-import com.jddev.crmapp.authentication.service.IAuthenticationService;
+import com.jddev.crmapp.authentication.service.AuthenticationService;
 import com.jddev.crmapp.utility.db.DbService;
 import com.jddev.crmapp.utility.token.ITokenService;
 import com.jddev.crmapp.exception.UserAlreadyExistsException;
@@ -21,7 +21,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 
 @Service
-public class AuthenticationServiceImpl implements IAuthenticationService {
+public class AuthenticationServiceImpl implements AuthenticationService {
 
     Logger logger = LoggerFactory.getLogger(AuthenticationServiceImpl.class);
     private final DbService dbService;
