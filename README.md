@@ -2,12 +2,12 @@
 A REST API made with Spring Boot to allow business owners to easily manage customer's appointments.
 
 ## Includes 
-Custom auth using Spring Security and JWT access/refresh tokens
-Logging with logback
-A scheduler service to send reminder emails for customers
-Centralized DB Service in order to make it easier to handle DB errors (was originally planned to make it easier to retry failed db calls, altough that is not included yet)
-Statistics, customer management, appointment management, easy email sending to customers
-Custom APIResponseObject class that allows easy managing of REST responses
+-Custom auth using Spring Security and JWT access/refresh tokens
+-Logging with logback
+-A scheduler service to send reminder emails for customers
+-Centralized DB Service in order to make it easier to handle DB errors (was originally planned to make it easier to retry failed db calls, altough that is not included yet)
+-Statistics, customer management, appointment management, easy email sending to customers
+-Custom APIResponseObject class that allows easy managing of REST responses
 
 ## REST API Endpoints Documentation
 
